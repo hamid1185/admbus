@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# Redirect all requests to index.php except for existing files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/(admin|api|assets|public)/
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Allow access to admin directory
+RewriteCond %{REQUEST_URI} ^/admin/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^admin/(.*)$ admin/$1 [L]
+
+# PHP settings
+php_flag display_errors On
+php_value error_reporting E_ALL
+
+# Protect sensitive files
+<FilesMatch "^(\.htaccess|\.env|composer\.json|package\.json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

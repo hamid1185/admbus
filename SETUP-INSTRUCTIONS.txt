@@ -1,0 +1,79 @@
+ADMISSION BUS - SETUP INSTRUCTIONS FOR XAMPP
+=====================================================
+
+1. DATABASE SETUP
+-----------------
+   a) Start XAMPP and ensure Apache and MySQL are running
+
+   b) Open phpMyAdmin (http://localhost/phpmyadmin)
+
+   c) Click "SQL" tab and paste the entire contents of database/schema.sql
+
+   d) Click "Go" to execute
+
+   e) The database "admission_bus" will be created with all tables and sample data
+
+2. CONFIGURATION
+----------------
+   a) Edit config/config.php if needed to match your database credentials:
+      - DB_HOST: localhost
+      - DB_USER: root
+      - DB_PASS: (empty by default)
+      - DB_NAME: admission_bus
+
+3. FILE PERMISSIONS
+-------------------
+   a) Ensure logs/ directory is writable
+
+   b) Create logs/ directory if it doesn't exist
+
+4. ADMIN ACCESS
+---------------
+   Default admin credentials:
+   - Username: admin
+   - Password: admin123
+
+   Login URL: http://localhost/[your-project-folder]/admin/login.php
+
+   IMPORTANT: Change the password after first login!
+
+5. TESTING THE APPLICATION
+--------------------------
+   a) Main site: http://localhost/[your-project-folder]/
+
+   b) Admin panel: http://localhost/[your-project-folder]/admin/login.php
+
+   c) Test booking flow by clicking "Book Now" on any university
+
+6. TROUBLESHOOTING
+------------------
+   - If you see "Database connection failed", check your MySQL service
+
+   - If pages show 404, ensure .htaccess is working or mod_rewrite is enabled
+
+   - Check logs/error.log for detailed error messages
+
+   - Asset files should be in:
+     * assets/css/style.css
+     * assets/js/main.js
+     * public/placeholder.svg
+
+7. COMMON FIXES
+---------------
+   - Clear browser cache if styles don't load
+
+   - Check that session.save_path is writable in PHP configuration
+
+   - Ensure short_open_tag is Off in php.ini
+
+8. SECURITY NOTES
+-----------------
+   - This is a development setup
+
+   - For production, change ENCRYPTION_KEY in config/config.php
+
+   - Enable HTTPS and update SITE_URL
+
+   - Set DEVELOPMENT_MODE to false in config/config.php
+
+For support, check the error log at logs/error.log

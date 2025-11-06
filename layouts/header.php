@@ -16,8 +16,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
 </head>
 <body class="font-sans antialiased bg-gray-50">
     <!-- Navigation Header -->

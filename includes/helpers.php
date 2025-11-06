@@ -6,11 +6,15 @@ define('HELPERS_LOADED', true);
 
 // Helper Functions - English function names and logic only
 
-function format_currency($amount) {
+function formatBDT($amount) {
     return '৳ ' . number_format($amount, 0);
 }
 
-function format_phone($phone) {
+function format_currency($amount) {
+    return formatBDT($amount);
+}
+
+function formatPhoneNumber($phone) {
     $phone = preg_replace('/[^0-9]/', '', $phone);
     if (strlen($phone) === 11 && substr($phone, 0, 1) === '0') {
         return '+880' . substr($phone, 1);
@@ -18,7 +22,11 @@ function format_phone($phone) {
     return $phone;
 }
 
-function format_date($date, $format = 'd-m-Y') {
+function format_phone($phone) {
+    return formatPhoneNumber($phone);
+}
+
+function formatDate($date, $format = 'd-m-Y') {
     try {
         return date($format, strtotime($date));
     } catch (Exception $e) {
@@ -27,8 +35,16 @@ function format_date($date, $format = 'd-m-Y') {
     }
 }
 
-function generate_invoice_number() {
+function format_date($date, $format = 'd-m-Y') {
+    return formatDate($date, $format);
+}
+
+function generateInvoiceNumber() {
     return 'INV-' . date('YmdHis') . '-' . rand(10000, 99999);
+}
+
+function generate_invoice_number() {
+    return generateInvoiceNumber();
 }
 
 function redirect($url) {
