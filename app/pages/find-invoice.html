@@ -1,0 +1,52 @@
+<section class="find-invoice py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-2xl">
+        <h1 class="text-4xl font-bold text-center mb-4 text-gray-900">আপনার ইনভয়েস খুঁজুন</h1>
+        <p class="text-center text-gray-600 mb-12">আপনার বুকিং রেফারেন্স বা ফোন নম্বর দিয়ে আপনার টিকেট খুঁজুন</p>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <form id="invoiceSearchForm" class="space-y-6">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">বুকিং রেফারেন্স অথবা ফোন নম্বর</label>
+                    <input type="text" id="searchInput" placeholder="যেমন: AB123456 অথবা 01234567890" class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-green-600" required>
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition">
+                    খুঁজুন
+                </button>
+            </form>
+
+            <!-- Results Container -->
+            <div id="resultsContainer" class="mt-8 hidden">
+                <div id="invoiceResults" class="space-y-4">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('invoiceSearchForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const searchInput = document.getElementById('searchInput').value;
+    
+    // Simulate API call - replace with real API endpoint
+    // For now, show placeholder results
+    const resultsContainer = document.getElementById('resultsContainer');
+    const invoiceResults = document.getElementById('invoiceResults');
+    
+    invoiceResults.innerHTML = `
+        <div class="bg-green-50 border-l-4 border-green-600 p-4 rounded">
+            <h3 class="font-bold text-gray-900 mb-2">বুকিং খুঁজে পাওয়া গেছে</h3>
+            <p><strong>রেফারেন্স:</strong> AB123456</p>
+            <p><strong>বিশ্ববিদ্যালয়:</strong> ঢাকা বিশ্ববিদ্যালয়</p>
+            <p><strong>তারিখ:</strong> ${new Date().toLocaleDateString('bn-BD')}</p>
+            <p><strong>অবস্থা:</strong> <span class="bg-green-600 text-white px-2 py-1 rounded">নিশ্চিত</span></p>
+            <button onclick="window.print()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                ডাউনলোড / প্রিন্ট করুন
+            </button>
+        </div>
+    `;
+    
+    resultsContainer.classList.remove('hidden');
+});
+</script>

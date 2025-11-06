@@ -1,0 +1,32 @@
+[06-Nov-2025 07:49:49 Europe/Berlin] PHP Warning:  Constant BASE_PATH already defined in E:\apps\xamp-p\htdocs\code\config\config.php on line 16
+[06-Nov-2025 12:49:49 Asia/Dhaka] PHP Fatal error:  Cannot redeclare get_current_user() in E:\apps\xamp-p\htdocs\code\includes\helpers.php on line 40
+[06-Nov-2025 07:49:51 Europe/Berlin] PHP Warning:  Constant BASE_PATH already defined in E:\apps\xamp-p\htdocs\code\config\config.php on line 16
+[06-Nov-2025 12:49:51 Asia/Dhaka] PHP Fatal error:  Cannot redeclare get_current_user() in E:\apps\xamp-p\htdocs\code\includes\helpers.php on line 40
+[06-Nov-2025 12:50:23 Asia/Dhaka] PHP Fatal error:  Cannot redeclare get_current_user() in E:\apps\xamp-p\htdocs\code\includes\helpers.php on line 40
+[06-Nov-2025 12:50:25 Asia/Dhaka] PHP Fatal error:  Cannot redeclare get_current_user() in E:\apps\xamp-p\htdocs\code\includes\helpers.php on line 40
+[06-Nov-2025 12:51:05 Asia/Dhaka] PHP Fatal error:  Cannot redeclare get_current_user() in E:\apps\xamp-p\htdocs\code\includes\helpers.php on line 40
+[06-Nov-2025 12:52:20 Asia/Dhaka] PHP Deprecated:  Creation of dynamic property mysqli::$report_mode is deprecated in E:\apps\xamp-p\htdocs\code\config\database.php on line 18
+[06-Nov-2025 12:52:20 Asia/Dhaka] Database connection successful at 2025-11-06 12:52:20
+[06-Nov-2025 12:52:20 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Call to undefined function get_current_url() in E:\apps\xamp-p\htdocs\code\layouts\header.php:19
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\code\app\pages\home.php(3): include()
+#1 E:\apps\xamp-p\htdocs\code\index.php(49): include('E:\\apps\\xamp-p\\...')
+#2 {main}
+  thrown in E:\apps\xamp-p\htdocs\code\layouts\header.php on line 19
+[06-Nov-2025 12:52:22 Asia/Dhaka] PHP Deprecated:  Creation of dynamic property mysqli::$report_mode is deprecated in E:\apps\xamp-p\htdocs\code\config\database.php on line 18
+[06-Nov-2025 12:52:22 Asia/Dhaka] Database connection successful at 2025-11-06 12:52:22
+[06-Nov-2025 12:52:22 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Call to undefined function get_current_url() in E:\apps\xamp-p\htdocs\code\layouts\header.php:19
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\code\app\pages\home.php(3): include()
+#1 E:\apps\xamp-p\htdocs\code\index.php(49): include('E:\\apps\\xamp-p\\...')
+#2 {main}
+  thrown in E:\apps\xamp-p\htdocs\code\layouts\header.php on line 19
+[06-Nov-2025 12:53:21 Asia/Dhaka] Database connection successful at 2025-11-06 12:53:21
+[06-Nov-2025 12:53:21 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Call to undefined function get_current_url() in E:\apps\xamp-p\htdocs\code\layouts\header.php:19
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\code\app\pages\home.php(3): include()
+#1 E:\apps\xamp-p\htdocs\code\index.php(49): include('E:\\apps\\xamp-p\\...')
+#2 {main}
+  thrown in E:\apps\xamp-p\htdocs\code\layouts\header.php on line 19
+[06-Nov-2025 12:56:14 Asia/Dhaka] Database connection successful at 2025-11-06 12:56:14
+[06-Nov-2025 12:57:13 Asia/Dhaka] Database connection successful at 2025-11-06 12:57:13
