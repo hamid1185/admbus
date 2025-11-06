@@ -10,6 +10,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 class Security {
+    private static $nonce = null;
+
     public static function sanitize($data) {
         if (is_array($data)) {
             return array_map([self::class, 'sanitize'], $data);
@@ -49,12 +51,20 @@ class Security {
         return openssl_decrypt($encrypted, $cipher, ENCRYPTION_KEY, 0, $iv);
     }
 
+    public static function generateNonce() {
+        if (self::$nonce === null) {
+            self::$nonce = bin2hex(random_bytes(16));
+        }
+        return self::$nonce;
+    }
+
     public static function setSecurityHeaders() {
+        $nonce = self::generateNonce();
         header("X-Content-Type-Options: nosniff");
         header("X-Frame-Options: DENY");
         header("X-XSS-Protection: 1; mode=block");
         header("Referrer-Policy: strict-origin-when-cross-origin");
-        header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; font-src 'self' data:;");
+        header("Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-{$nonce}' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' cdn.tailwindcss.com; img-src 'self' data: https:;");
     }
 }
 

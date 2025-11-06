@@ -30,3 +30,61 @@ Stack trace:
   thrown in E:\apps\xamp-p\htdocs\code\layouts\header.php on line 19
 [06-Nov-2025 12:56:14 Asia/Dhaka] Database connection successful at 2025-11-06 12:56:14
 [06-Nov-2025 12:57:13 Asia/Dhaka] Database connection successful at 2025-11-06 12:57:13
+[06-Nov-2025 13:47:09 Asia/Dhaka] Database connection successful at 2025-11-06 13:47:09
+[06-Nov-2025 13:47:13 Asia/Dhaka] Database connection successful at 2025-11-06 13:47:13
+[06-Nov-2025 13:59:36 Asia/Dhaka] Database connection successful at 2025-11-06 13:59:36
+[06-Nov-2025 13:59:41 Asia/Dhaka] Database connection successful at 2025-11-06 13:59:41
+[06-Nov-2025 14:01:10 Asia/Dhaka] Database connection successful at 2025-11-06 14:01:10
+[06-Nov-2025 14:11:22 Asia/Dhaka] Database connection successful at 2025-11-06 14:11:22
+[06-Nov-2025 14:18:54 Asia/Dhaka] Database connection successful at 2025-11-06 14:18:54
+[06-Nov-2025 14:32:11 Asia/Dhaka] Database connection successful at 2025-11-06 14:32:11
+[06-Nov-2025 14:34:49 Asia/Dhaka] Database connection successful at 2025-11-06 14:34:49
+[06-Nov-2025 14:35:45 Asia/Dhaka] Database connection successful at 2025-11-06 14:35:45
+[06-Nov-2025 14:35:47 Asia/Dhaka] Database connection successful at 2025-11-06 14:35:47
+[06-Nov-2025 14:36:09 Asia/Dhaka] Database connection successful at 2025-11-06 14:36:09
+[06-Nov-2025 14:36:17 Asia/Dhaka] Database connection successful at 2025-11-06 14:36:17
+[06-Nov-2025 14:36:51 Asia/Dhaka] Database connection successful at 2025-11-06 14:36:51
+[06-Nov-2025 14:36:53 Asia/Dhaka] Database connection successful at 2025-11-06 14:36:53
+[06-Nov-2025 14:58:45 Asia/Dhaka] Database connection successful at 2025-11-06 14:58:45
+[06-Nov-2025 14:58:49 Asia/Dhaka] Database connection successful at 2025-11-06 14:58:49
+[06-Nov-2025 15:00:15 Asia/Dhaka] Database connection successful at 2025-11-06 15:00:15
+[06-Nov-2025 15:00:21 Asia/Dhaka] Database connection successful at 2025-11-06 15:00:21
+[06-Nov-2025 15:00:35 Asia/Dhaka] Database connection successful at 2025-11-06 15:00:35
+[06-Nov-2025 15:01:24 Asia/Dhaka] Database connection successful at 2025-11-06 15:01:24
+[06-Nov-2025 15:15:06 Asia/Dhaka] Database connection successful at 2025-11-06 15:15:06
+[06-Nov-2025 15:15:07 Asia/Dhaka] Database connection successful at 2025-11-06 15:15:07
+[06-Nov-2025 15:15:08 Asia/Dhaka] Database connection successful at 2025-11-06 15:15:08
+[06-Nov-2025 15:15:08 Asia/Dhaka] Database connection successful at 2025-11-06 15:15:08
+[06-Nov-2025 15:21:28 Asia/Dhaka] Database connection successful at 2025-11-06 15:21:28
+[06-Nov-2025 10:21:47 Europe/Berlin] PHP Warning:  Constant BASE_PATH already defined in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 16
+[06-Nov-2025 10:21:47 Europe/Berlin] PHP Warning:  mkdir(): File exists in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 21
+[06-Nov-2025 15:25:22 Asia/Dhaka] Database connection successful at 2025-11-06 15:25:22
+[06-Nov-2025 15:27:50 Asia/Dhaka] Database connection successful at 2025-11-06 15:27:50
+[06-Nov-2025 15:28:46 Asia/Dhaka] Database connection successful at 2025-11-06 15:28:46
+[06-Nov-2025 15:28:52 Asia/Dhaka] Database connection successful at 2025-11-06 15:28:52
+[06-Nov-2025 15:28:55 Asia/Dhaka] Database connection successful at 2025-11-06 15:28:55
+[06-Nov-2025 10:28:58 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in E:\apps\xamp-p\htdocs\admission-bus\config\config.php:17
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\admission-bus\index.php(5): require_once()
+#1 {main}
+  thrown in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 17
+[06-Nov-2025 10:29:01 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in E:\apps\xamp-p\htdocs\admission-bus\config\config.php:17
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\admission-bus\index.php(5): require_once()
+#1 {main}
+  thrown in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 17
+[06-Nov-2025 10:29:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in E:\apps\xamp-p\htdocs\admission-bus\config\config.php:17
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\admission-bus\index.php(5): require_once()
+#1 {main}
+  thrown in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 17
+[06-Nov-2025 10:29:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in E:\apps\xamp-p\htdocs\admission-bus\config\config.php:17
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\admission-bus\index.php(5): require_once()
+#1 {main}
+  thrown in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 17
+[06-Nov-2025 10:29:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in E:\apps\xamp-p\htdocs\admission-bus\config\config.php:17
+Stack trace:
+#0 E:\apps\xamp-p\htdocs\admission-bus\index.php(5): require_once()
+#1 {main}
+  thrown in E:\apps\xamp-p\htdocs\admission-bus\config\config.php on line 17

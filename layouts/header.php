@@ -1,5 +1,8 @@
 <?php
 // Header/Navigation Layout - English code, Bengali UI text only
+require_once dirname(dirname(__FILE__)) . '/config/config.php';
+require_once dirname(dirname(__FILE__)) . '/includes/security.php';
+$nonce = Security::generateNonce();
 ?>
 <!DOCTYPE html>
 <html lang="bn">
@@ -16,6 +19,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Updated CSP to use nonce-based script security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-<?php echo $nonce; ?>' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
 </head>
 <body class="font-sans antialiased bg-gray-50">
     <!-- Navigation Header -->
@@ -61,7 +67,8 @@
         </div>
     </header>
 
-    <script>
+    <!-- Added nonce to inline script for CSP compliance -->
+    <script nonce="<?php echo $nonce; ?>">
         document.getElementById('menuToggle')?.addEventListener('click', function() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
@@ -72,3 +79,5 @@
             });
         });
     </script>
+</body>
+</html>

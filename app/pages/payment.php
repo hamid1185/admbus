@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- Payment Methods -->
                     <div class="space-y-4">
                         <!-- bKash -->
-                        <label class="flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" onclick="selectPaymentMethod('bkash')">
+                        <!-- Convert onclick to data attributes for CSP compliance -->
+                        <label class="payment-method-label flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" data-method="bkash">
                             <input type="radio" name="payment_method" value="bkash" required class="w-5 h-5 text-green-600">
                             <div class="ml-4 flex-1">
                                 <div class="font-bold text-lg text-gray-900">bKash</div>
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
 
                         <!-- Nagad -->
-                        <label class="flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" onclick="selectPaymentMethod('nagad')">
+                        <label class="payment-method-label flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" data-method="nagad">
                             <input type="radio" name="payment_method" value="nagad" class="w-5 h-5 text-green-600">
                             <div class="ml-4 flex-1">
                                 <div class="font-bold text-lg text-gray-900">Nagad</div>
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
 
                         <!-- Rocket -->
-                        <label class="flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" onclick="selectPaymentMethod('rocket')">
+                        <label class="payment-method-label flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" data-method="rocket">
                             <input type="radio" name="payment_method" value="rocket" class="w-5 h-5 text-green-600">
                             <div class="ml-4 flex-1">
                                 <div class="font-bold text-lg text-gray-900">Rocket</div>
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
 
                         <!-- Card Payment -->
-                        <label class="flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" onclick="selectPaymentMethod('card')">
+                        <label class="payment-method-label flex items-center p-6 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-600 transition" data-method="card">
                             <input type="radio" name="payment_method" value="card" class="w-5 h-5 text-green-600">
                             <div class="ml-4 flex-1">
                                 <div class="font-bold text-lg text-gray-900">ক্রেডিট/ডেবিট কার্ড</div>
@@ -111,7 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <button type="submit" id="paymentBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-bold text-lg transition">
                             পেমেন্ট করতে এগিয়ে যান
                         </button>
-                        <button type="button" onclick="window.history.back()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-900 py-3 rounded-lg font-bold transition">
+                        <!-- Convert onclick to data attribute -->
+                        <button type="button" id="backBtn" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-900 py-3 rounded-lg font-bold transition">
                             পূর্ববর্তী
                         </button>
                     </div>
@@ -169,16 +171,30 @@ const paymentInstructions = {
     }
 };
 
-function selectPaymentMethod(method) {
-    const instructions = paymentInstructions[method];
-    const instructionDiv = document.getElementById('paymentInstructions');
-    const titleEl = document.getElementById('instructionTitle');
-    const listEl = document.getElementById('instructionList');
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.payment-method-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const method = this.getAttribute('data-method');
+            selectPaymentMethod(method);
+        });
+    });
 
-    titleEl.textContent = instructions.title;
-    listEl.innerHTML = instructions.steps.map(step => `<li>${step}</li>`).join('');
-    instructionDiv.style.display = 'block';
-}
+    // Back button handler
+    document.getElementById('backBtn')?.addEventListener('click', function() {
+        window.history.back();
+    });
+
+    function selectPaymentMethod(method) {
+        const instructions = paymentInstructions[method];
+        const instructionDiv = document.getElementById('paymentInstructions');
+        const titleEl = document.getElementById('instructionTitle');
+        const listEl = document.getElementById('instructionList');
+
+        titleEl.textContent = instructions.title;
+        listEl.innerHTML = instructions.steps.map(step => `<li>${step}</li>`).join('');
+        instructionDiv.style.display = 'block';
+    }
+});
 </script>
 
 <?php include BASE_PATH . 'layouts/footer.php'; ?>

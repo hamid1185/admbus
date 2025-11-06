@@ -13,13 +13,13 @@ ini_set('error_log', __DIR__ . '/../logs/error.log');
 // Development mode - set to false in production
 define('DEVELOPMENT_MODE', true);
 
-define('BASE_PATH', __DIR__ . '/../');
+// define('BASE_PATH', __DIR__ . '/../');
 define('LOGS_PATH', BASE_PATH . 'logs/');
 
 // Create logs directory if it doesn't exist
-if (!is_dir(LOGS_PATH)) {
-    mkdir(LOGS_PATH, 0755, true);
-}
+// if (!is_dir(LOGS_PATH)) {
+//     mkdir(LOGS_PATH, 0755, true);
+// }
 
 // Database Configuration
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');

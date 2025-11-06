@@ -56,7 +56,8 @@ $_SESSION['last_booking'] = [
 
                 <!-- Download Invoice Button -->
                 <div class="flex gap-4 justify-center mb-8 flex-wrap">
-                    <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition">
+                    <!-- Convert onclick buttons to use event listeners -->
+                    <button id="printConfirmBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition">
                         🖨️ প্রিন্ট করুন
                     </button>
                     <a href="?page=find-invoice" class="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold transition inline-block">
@@ -98,5 +99,13 @@ $_SESSION['last_booking'] = [
         </div>
     </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('printConfirmBtn')?.addEventListener('click', function() {
+        window.print();
+    });
+});
+</script>
 
 <?php include BASE_PATH . 'layouts/footer.php'; ?>

@@ -50,7 +50,8 @@ include BASE_PATH . 'layouts/header.php';
                         <p>🚌 উপলব্ধ সিট: <strong><?php echo $route['seats']; ?></strong></p>
                         <p>📍 বিভাগ: <strong><?php echo ucfirst($route['division']); ?></strong></p>
                     </div>
-                    <button onclick="selectRoute(<?php echo $route['id']; ?>, '<?php echo addslashes($route['name']); ?>')" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition">
+                    <!-- Convert onclick to data attributes for CSP compliance -->
+                    <button class="route-select-btn w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition" data-route-id="<?php echo $route['id']; ?>" data-route-name="<?php echo addslashes($route['name']); ?>">
                         টিকেট বুক করুন
                     </button>
                 </div>
@@ -61,33 +62,42 @@ include BASE_PATH . 'layouts/header.php';
 </div>
 
 <script>
-function selectRoute(routeId, routeName) {
-    sessionStorage.setItem('selectedRoute', JSON.stringify({id: routeId, name: routeName}));
-    window.location.href = '?page=booking';
-}
-
-// Search and filter functionality
-document.getElementById('searchInput')?.addEventListener('keyup', function() {
-    filterRoutes();
-});
-
-document.getElementById('divisionFilter')?.addEventListener('change', function() {
-    filterRoutes();
-});
-
-function filterRoutes() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const division = document.getElementById('divisionFilter').value;
-    const cards = document.querySelectorAll('.route-card');
-    
-    cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        const divisionMatch = division === '' || card.textContent.includes(division);
-        const searchMatch = text.includes(searchTerm);
-        
-        card.style.display = (divisionMatch && searchMatch) ? '' : 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    // Route selection handler
+    document.querySelectorAll('.route-select-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const routeId = this.getAttribute('data-route-id');
+            const routeName = this.getAttribute('data-route-name');
+            sessionStorage.setItem('selectedRoute', JSON.stringify({id: routeId, name: routeName}));
+            window.location.href = '?page=booking';
+        });
     });
-}
+
+    // Search and filter functionality
+    const searchInput = document.getElementById('searchInput');
+    const divisionFilter = document.getElementById('divisionFilter');
+
+    if (searchInput) {
+        searchInput.addEventListener('keyup', filterRoutes);
+    }
+    if (divisionFilter) {
+        divisionFilter.addEventListener('change', filterRoutes);
+    }
+
+    function filterRoutes() {
+        const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+        const division = document.getElementById('divisionFilter')?.value || '';
+        const cards = document.querySelectorAll('.route-card');
+        
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            const divisionMatch = division === '' || card.textContent.includes(division);
+            const searchMatch = text.includes(searchTerm);
+            
+            card.style.display = (divisionMatch && searchMatch) ? '' : 'none';
+        });
+    }
+});
 </script>
 
 <?php include BASE_PATH . 'layouts/footer.php'; ?>

@@ -41,11 +41,20 @@ include BASE_PATH . 'layouts/header.php';
                 <p class="text-gray-700 leading-relaxed">আপনার সমস্ত তথ্য SSL এনক্রিপশন দ্বারা সুরক্ষিত এবং গোপনীয় রাখা হয়।</p>
             </div>
 
-            <button onclick="window.print()" class="mt-8 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">
+            <!-- Convert onclick to button with ID for event listener -->
+            <button id="printBtn" class="mt-8 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">
                 প্রিন্ট করুন
             </button>
         </div>
     </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('printBtn')?.addEventListener('click', function() {
+        window.print();
+    });
+});
+</script>
 
 <?php include BASE_PATH . 'layouts/footer.php'; ?>

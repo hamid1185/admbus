@@ -1,6 +1,6 @@
 <?php
 define('BASE_PATH', dirname(dirname(__FILE__)) . '/');
-require_once BASE_PATH 'config/config.php';
+require_once BASE_PATH . 'config/config.php';
 require_once BASE_PATH . 'includes/security.php';
 
 header('Content-Type: application/json');

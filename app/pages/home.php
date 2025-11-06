@@ -27,10 +27,11 @@ include BASE_PATH . 'layouts/header.php';
                         স্বপ্নের বিশ্ববিদ্যালয়ে ভর্তি পরিক্ষা দিতে যাওয়ার নিরাপদ ও সহজ মাধ্যম।
                     </p>
                     <div class="flex gap-4 flex-wrap">
-                        <button onclick="document.getElementById('routes').scrollIntoView({behavior: 'smooth'})" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition">
+                        <!-- Converted onclick to use data attributes for CSP compliance -->
+                        <button class="scroll-to-routes bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition" data-target="#routes">
                             এখনই বুক করুন
                         </button>
-                        <button onclick="window.location.href='<?php echo SITE_URL; ?>?page=find-invoice'" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-semibold transition">
+                        <button class="go-to-invoice border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-semibold transition">
                             ইনভয়েস খুঁজুন
                         </button>
                     </div>
@@ -80,7 +81,8 @@ include BASE_PATH . 'layouts/header.php';
                     <div class="p-4">
                         <h3 class="text-xl font-bold text-gray-900 mb-2"><?php echo htmlspecialchars($uni['name_bn']); ?></h3>
                         <p class="text-gray-600 text-sm mb-4"><?php echo htmlspecialchars($uni['name_en']); ?></p>
-                        <button onclick="selectUniversity('<?php echo htmlspecialchars($uni['name_en']); ?>')" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition">
+                        <!-- Converted onclick to use class for CSP compliance -->
+                        <button class="select-university w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition" data-university="<?php echo htmlspecialchars($uni['name_en']); ?>">
                             এখনই বুক করুন
                         </button>
                     </div>
@@ -91,11 +93,32 @@ include BASE_PATH . 'layouts/header.php';
     </section>
 </div>
 
-<script>
-function selectUniversity(name) {
-    sessionStorage.setItem('selectedUniversity', name);
-    window.location.href = '<?php echo SITE_URL; ?>?page=booking';
-}
+<!-- Added external script instead of inline for CSP compliance -->
+<script src="/assets/js/main.js"></script>
+<script nonce="<?php echo isset($nonce) ? $nonce : ''; ?>">
+    // Home page event listeners
+    document.querySelectorAll('.scroll-to-routes').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById('routes');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    document.querySelectorAll('.go-to-invoice').forEach(btn => {
+        btn.addEventListener('click', () => {
+            window.location.href = '<?php echo SITE_URL; ?>?page=find-invoice';
+        });
+    });
+
+    document.querySelectorAll('.select-university').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const university = this.getAttribute('data-university');
+            sessionStorage.setItem('selectedUniversity', university);
+            window.location.href = '<?php echo SITE_URL; ?>?page=booking';
+        });
+    });
 </script>
 
 <?php include BASE_PATH . 'layouts/footer.php'; ?>

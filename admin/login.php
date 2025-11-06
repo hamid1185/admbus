@@ -32,8 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 // Update last login
                 $db->query("UPDATE admin_users SET last_login = NOW() WHERE id = ?", [$admin['id']]);
-
+                
                 redirect('/admin/index.php?page=dashboard');
+
             } else {
                 $error = 'পাসওয়ার্ড ভুল';
             }

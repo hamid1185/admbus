@@ -109,6 +109,7 @@ CREATE TABLE admin_users (
     INDEX idx_role (role)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 -- System Logs Table
 CREATE TABLE system_logs (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -126,6 +127,7 @@ CREATE TABLE system_logs (
     INDEX idx_action (action)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 -- Settings Table
 CREATE TABLE settings (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -134,6 +136,7 @@ CREATE TABLE settings (
     description TEXT,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- Insert Universities Data
 INSERT INTO universities (name, english_name, division, address) VALUES
